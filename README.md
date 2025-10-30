@@ -60,3 +60,82 @@ use treinamento;
 select *
 FROM  funcionario
 WHERE cod_gestor IS NULL;
+---
+**4.a) Selecione o nome e código do departamento de todos os funcionários que trabalham no departamento >= 30 ou nao estejam alocados em nenhum departamento. 
+**
+-
+use treinamento;
+
+SELECT nome, cod_dept
+FROM funcionario
+WHERE cod_dept >= 30
+
+---
+**5.a) Liste o nome, cargo e salário de todos os funcionários, ordenado pelo salário, do maior para o menor.
+**
+-
+use treinamento;
+
+SELECT nome, cargo, salario
+FROM funcionario
+ORDER BY salario DESC
+
+---
+**6.a) Liste apenas o nome, cargo e salário para os 5 mais bem remunerados.
+**
+-
+use treinamento;
+
+SELECT nome, cargo, salario
+FROM funcionario
+ORDER BY salario DESC
+LIMIT 10;
+
+---
+**7.a) Liste a quantidade de registros para a tabela departamento.
+**
+-
+use treinamento;
+
+SELECT COUNT(*)
+FROM departamento
+
+---
+**7.b) Faça o mesmo do exercício anterior para as tabelas regiao, abrangencia e funcionario.
+**
+-
+use treinamento;
+
+SELECT COUNT(*)
+FROM regiao, abrangencia, funcionario
+
+---
+**7.c) Liste a média de salário da empresa. 
+**
+-
+use treinamento;
+
+SELECT AVG (salario)
+FROM funcionario
+
+---
+**7.d) Liste o código dos departamentos e quantidade de funcionários para cada departamento.
+**
+-
+use treinamento;
+
+SELECT cod_dept, COUNT(*)
+from funcionario
+GROUP BY cod_dept
+
+---
+**8.a) Liste o código dos departamentos e quantidade de funcionários para cada departamento, mas apenas para os departamentos com mais de 1 funcionário.
+**
+-
+use treinamento;
+
+SELECT cod_dept, COUNT(*)
+from funcionario
+GROUP BY cod_dept
+HAVING COUNT(*)>1
+
